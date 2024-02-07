@@ -1,0 +1,28 @@
+.search_sec{
+    display: inline-flex;
+    margin-top: 40px;
+    border-radius: 30px;
+    gap: 5px;
+    box-shadow: 2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+}
+
+.search_txt{
+  max-width: 190px;
+  padding: 12px;
+  border: none;
+  border-radius: 30px;
+  outline: none;
+  color: dimgray;
+  color: black;
+}
+
+.img_search{
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50px;
+}
+
+.img_search:hover{
+    transition: 1s;
+    filter: contrast(90%);
+}
