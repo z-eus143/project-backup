@@ -17,7 +17,7 @@ userDate.post("/createDate", async(req,res) => {
     });
     const token = jwt.sign({firstname : result.firstname, lastname : result.lastname, id : result._id, image : result.image, email : result.email}, SECRET_KEY)
     res.status(201).json({user: result, token: token})
-}else{
+    }else{
         res.status(400).json({"message" : "user Already Exist"})
     }
     

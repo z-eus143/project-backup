@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import '../Signupdata/style.css'
 import logo from 'D:/tanmay/client/src/assets/profile.jpg'
-import {login} from '../../store'
-import { useDispatch } from 'react-redux'
 import {useNavigate} from 'react-router-dom'
 import Cookies from 'js-cookie'
 import axios from 'axios'
@@ -15,7 +13,6 @@ export const Signup = () => {
     const [lname,setlname] = useState("")
     const [email,setemail] = useState("")
     const [mobileno,setmobileno] = useState("")
-    const dispatch = useDispatch();
     const handleImagechange = (event) => {
         const file = event.target.files[0];
         if(file){
@@ -40,13 +37,9 @@ export const Signup = () => {
         await axios.post("http://localhost:4000/create/createDate",{user})
         .then(res => {
             Cookies.remove('email')
-            dispatch(login({
-                firstname : res.data.user.firstname,
-                lastname : res.data.user.lastname,
-                email : res.data.user.email,
-                mobileno : res.data.user.mobileno,
-                image : res.data.user.image.toString()
-              }))
+            localStorage.setItem("userId",res.data.user._id)
+            localStorage.setItem("userName",res.data.user.firstname)
+            localStorage.setItem("userImage",res.data.user.image)
             navigate("/");
         })
     }

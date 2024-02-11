@@ -1,7 +1,9 @@
+import Cards from "../Cards/cards"
 import { Header } from "../header/header"
 import '../home/style.css'
 import search from 'D:/tanmay/client/src/assets/search.png'
 import { useState } from "react"
+import logo from '../../assets/profile.jpg'
 
 export const Home = () => {
     const [state, setstate] = useState("")
@@ -26,7 +28,54 @@ export const Home = () => {
                 <img src={search} alt="search" className="img_search" onClick={searchData}/>
             </div>
             <div className="body_post">
-                
+                <Cards title='Egypt'
+                imgSrc={logo}
+                imgAlt='Card Image'
+                description='This is the card description'
+                buttontext='$700/ Month'
+                link='CardPage'/>
+                <Cards title='Egypt'
+                imgSrc={logo}
+                imgAlt='Card Image'
+                description='This is the card description'
+                buttontext='$700/ Month'
+                link='CardPage'/>
+                <Cards title='Egypt'
+                imgSrc={logo}
+                imgAlt='Card Image'
+                description='This is the card description'
+                buttontext='$700/ Month'
+                link='CardPage'/>
+                <Cards title='Egypt'
+                imgSrc={logo}
+                imgAlt='Card Image'
+                description='This is the card description'
+                buttontext='$700/ Month'
+                link='CardPage'/>
+                <Cards title='Egypt'
+                imgSrc={logo}
+                imgAlt='Card Image'
+                description='This is the card description'
+                buttontext='$700/ Month'
+                link='CardPage'/>
+                <Cards title='Egypt'
+                imgSrc={logo}
+                imgAlt='Card Image'
+                description='This is the card description'
+                buttontext='$700/ Month'
+                link='CardPage'/>
+                <Cards title='Egypt'
+                imgSrc={logo}
+                imgAlt='Card Image'
+                description='This is the card description'
+                buttontext='$700/ Month'
+                link='CardPage'/>
+                <Cards title='Egypt'
+                imgSrc={logo}
+                imgAlt='Card Image'
+                description='This is the card description'
+                buttontext='$700/ Month'
+                link='CardPage'/>
             </div>
         </div>
         </>

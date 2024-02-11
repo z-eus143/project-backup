@@ -4,6 +4,5 @@ export const Wishlist = () => {
     return (
     <>
     <Header />
-        
     </>
 )}

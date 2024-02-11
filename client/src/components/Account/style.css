@@ -1,0 +1,127 @@
+.acc_sec{
+    padding-top: 100px;
+}
+
+.acc_user_info{
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.User_Account{
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr;
+    margin-bottom: 2rem;
+}
+
+
+.user_image{
+    margin-top: 20px;
+    height: 120px;
+    width: 120px;
+    border-radius: 60px;
+}
+
+.account_user_profile{
+    background-color: white;
+    height: 15rem;
+    width: 19rem;
+    margin-left: 10%;
+    border-radius: 30px;
+    box-shadow:  2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+    padding: 10px;
+}
+
+.account_user_contact{
+    background-color: white;
+    margin-top: 2.5rem;
+    border-radius: 30px;
+    box-shadow:  2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+    height: 10rem;
+}
+
+.account_user_profile_name{
+    font-weight: 400;
+}
+
+.user_rent{
+    background-color: white;
+    height: 3.5rem;
+    text-align: left;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 30px;
+    margin-left: 40px;
+    margin-right: 40px;
+    box-shadow:  2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+}
+
+.user_hosting{
+    background-color: white;
+    height: 3.5rem;
+    text-align: left;
+    margin: 20px;
+    padding: 10px;
+    border-radius: 30px;
+    margin-left: 40px;
+    margin-right: 40px;
+    box-shadow:  2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+}
+.message{
+    background-color: #EEEDED;
+    height: 15rem;
+    width: 17rem;
+    margin-left: 3.7rem;
+    border-radius: 30px;
+    box-shadow:  2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+.user_message{
+    height: 20rem;
+    width: 25rem;
+    margin-left: 10rem;
+}
+.message_txt{
+    font-weight: 400;
+}
+.mobile_txt{
+    font-weight: 400;
+}
+.email_txt{
+    font-weight: 400;
+}
+
+.user_below_sec{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.user_below_sec_payment{
+    gap: 10px;
+    height: 7rem;
+    width: 25rem;
+    box-shadow:  2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+    font-weight: 400;
+    font-size: x-large;
+    border-radius: 30px;
+    margin-left: 40%;
+    margin-bottom: 2rem;
+}
+.user_below_sec_notification{
+    height: 7rem;
+    width: 25rem;
+    box-shadow:  2px 2px 7px 0 rgb(0, 0, 0, 0.2);
+    font-weight: 400;
+    font-size: x-large;
+    border-radius: 30px;
+    margin-left: 9%;
+    margin-bottom: 2rem;
+}
+.para{
+    font-size: small;
+}
+
+.acc_more_opt{
+    margin-bottom: 1rem;
+    font-weight: 600;
+}

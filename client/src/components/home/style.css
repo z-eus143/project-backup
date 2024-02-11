@@ -1,3 +1,7 @@
+.body_sec{
+    padding-top: 5rem;
+}
+
 .search_sec{
     display: inline-flex;
     margin-top: 40px;
@@ -25,4 +29,12 @@
 .img_search:hover{
     transition: 1s;
     filter: contrast(90%);
+}
+.body_post{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 2rem;
+    margin-top: 2rem;
+    margin-left: 10rem;
+    margin-bottom: 2rem;
 }

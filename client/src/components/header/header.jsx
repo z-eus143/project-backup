@@ -1,8 +1,6 @@
 import '../header/style.css'
 import logo from 'D:/tanmay/client/src/assets/profile.jpg'
 import logo1 from 'D:/tanmay/client/src/assets/logo.png'
-import {login , logout} from '../../store'
-import { useDispatch , useSelector} from 'react-redux'
 import { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
 import {Magic} from 'magic-sdk'
@@ -12,9 +10,8 @@ export const Header = () => {
     const [open,setOpen] = useState(false);
     const [open1,setOpen1] = useState(false);
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const User = useSelector((state) => state.user.value.firstname)
-    const base64Image = useSelector((state) => state.user.value.image)
+    const User = localStorage.getItem("userName")
+    const base64Image = localStorage.getItem("userImage")
 
 
     const handleLogin = async (e) => {
@@ -30,13 +27,9 @@ export const Header = () => {
             const resemail = res.data.user.email
             if(resemail)
             {
-              dispatch(login({
-                firstname : res.data.user.firstname,
-                lastname : res.data.user.lastname,
-                email : res.data.user.email,
-                mobileno : res.data.user.mobileno,
-                image : res.data.user.image.toString()
-              }))
+              localStorage.setItem("userId",res.data.user._id)
+              localStorage.setItem("userName",res.data.user.firstname)
+              localStorage.setItem("userImage",res.data.user.image)
               navigate("/")
               setOpen1(!open1)
             }
@@ -61,9 +54,9 @@ export const Header = () => {
                     <p className="slogen">Rent the Life You've Always Imagined</p>
                 </div>
             </div>
+            <div>{(User) && <h1 onClick={() => navigate("/createPost")} className='hostProp'>Host Property</h1>}</div>
             <div className='Account'>
                 <div>
-                    {/* <img className='acc_img' src={logo} alt='profile'></img> */}
                     {(base64Image) ? <img className='acc_img' src={base64Image} alt='profile'></img> : <img className='acc_img' src={logo} alt='profile'></img>}
                 </div>
                 {(User) ?<div onClick={() => {setOpen(!open)}}>{User}</div> : <div onClick={() => {setOpen1(!open1)}}>Signin</div>}
@@ -73,15 +66,14 @@ export const Header = () => {
                 (open) &&
                 <div className='dropdownlist'><ul className='ul_list'>
                 <div onClick={() => navigate("/")}><Dropdownlist text ={"Home"}/></div>
-                <Dropdownlist text ={"Account"}/>
+                <div onClick={() => navigate("/Account")}><Dropdownlist text ={"Account"}/></div>
                 <div onClick={() => navigate("/wishlist")}><Dropdownlist text ={"Whislist"}/></div>
-                <div onClick={() => navigate("/createPost")}><Dropdownlist text ={"List Propery"}/></div>
-                <div onClick={() => {dispatch(logout()); setOpen(!open); navigate("/")}}><Dropdownlist text ={"Logout"}/></div>
+                <div onClick={() => {setOpen(!open); navigate("/") ; localStorage.setItem("userId","");localStorage.setItem("userName","");localStorage.setItem("userImage","")}}><Dropdownlist text ={"Logout"}/></div>
                 </ul></div>
             }
             {
                 (open1) &&
-                <div className='dropdownform'><h2>Enter your e-mail to verify</h2>
+                <div ><div className='dropdownform'><h2>Enter your e-mail to verify</h2>
                 <form onSubmit={handleLogin}>
                   <input
                     type="email"
@@ -91,7 +83,7 @@ export const Header = () => {
                     className='signInput'
                   />
                   <button type="submit" className='signbtn'>Verify</button>
-                </form></div>
+                </form></div></div>
             }
         </div>
     )
