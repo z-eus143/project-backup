@@ -32,9 +32,9 @@
 }
 .body_post{
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     row-gap: 2rem;
     margin-top: 2rem;
-    margin-left: 10rem;
+    margin-left: 5rem;
     margin-bottom: 2rem;
 }
