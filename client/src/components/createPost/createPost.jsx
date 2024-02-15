@@ -1,16 +1,29 @@
 import { Header } from "../header/header"
 import '../createPost/style.css'
-import { Room, Sharedroom, Type, Wholeroom } from "./formcomponent/type"
+import { Payment , Address , Images, Propertydescribe } from "./formcomponent/type"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 export const CreatePost = () => {
     const navigate = useNavigate();
+    const [type,settype] = useState("")
     const [change,setchanege] = useState(0)
     return(
     <>
         <Header/>
-        {(change == 0) ? <Type/> : (change == 1) ? <Room/> : (change == 2) ? <Sharedroom/> : <Wholeroom/>}
+        {(change == 0) ? 
+            <div className="createpost">
+                <div className="select_type">
+                    <div className="question_txt">What type of place will guests have?</div>
+                    <div className="room" onClick={ () => {setchanege(change+1);settype("Sharedroom")} }><h1 className="room_txt" >A shared room</h1><p className="room_txt_p">Occupant live in a room or common area that may be shared with you or others.</p></div>
+                    <div className="room" onClick={ () => {setchanege(change+1);settype("Room")} }><h1 className="room_txt">A room</h1><p className="room_txt_p">Occupant have their own room in a home, plus access to shared spaces.</p></div>
+                    <div className="room" onClick={ () => {setchanege(change+1);settype("Wholeroom")} }><h1 className="room_txt">A entire place</h1><p className="room_txt_p">Occupant have the whole place to themselves.</p></div>
+                </div>
+            </div> 
+            : (change == 1) ? <Propertydescribe type={type}/>
+            : (change == 2) ? <Address/> 
+            : (change == 3) ? <Images/> 
+            : <Payment/>}
         {/* <Type/> */}
         {/* progress bar */}
 
