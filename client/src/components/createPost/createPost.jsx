@@ -10,7 +10,7 @@ export const CreatePost = () => {
     const [change,setchanege] = useState(0)
     return(
     <>
-        <Header/>
+        <Header/> 
         {(change == 0) ? 
             <div className="createpost">
                 <div className="select_type">
