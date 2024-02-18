@@ -8,7 +8,7 @@ PropertyData.post("/propertydata", async(req,res) => {
         const {Type,NoBedRoom,NoBathRoom,NoOccupancy,Description,Amenities,HouseRules,Additionalinfo,userId} = req.body;
         const existinguser = await usermodel.findOne({_id : userId})
         if(existinguser){
-            const create = await PropertyModel.create({
+            await PropertyModel.create({
                 Type : Type,
                 NoBedRoom : NoBedRoom,
                 NoBathRoom : NoBathRoom,
@@ -19,13 +19,23 @@ PropertyData.post("/propertydata", async(req,res) => {
                 Additionalinfo : Additionalinfo,
                 userId : userId
             });
-            res.status(201).json({property : create})
+            res.status(201).json({"message" : "Created"})
         } else {
             res.status(400).json({"message" : "Wrong data"})
         }
     } catch (error) {
         res.status(400).json({"message" : "Error"})
         console.log(error)
+    }
+})
+
+
+PropertyData.get("/properties", async(req,res) => {
+    try {
+        const properties = await PropertyModel.find()
+        res.status(200).json({properties})
+    } catch (error) {
+        res.status(400).json({"message" : "Error"})
     }
 })
 
