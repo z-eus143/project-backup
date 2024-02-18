@@ -7,6 +7,7 @@ const { json } = require("body-parser")
 const userDate = require("./Routes/createUser")
 const mongoose = require('mongoose')
 const UserRouter = require("./Routes/user")
+const PropertyRouter = require("./Routes/property")
 
 app.use(json({limit: '50mb'}))
 app.use(cors())
@@ -18,6 +19,7 @@ app.get("/" , (req,res) => {
 app.use("/auth", authRouter)
 app.use("/create", userDate)
 app.use("/Account", UserRouter) 
+app.use("/property", PropertyRouter)
 
 
 

@@ -51,19 +51,19 @@ const Propertyroom = () => {
          </div>
          <div>
             <label>Number of Bedrooms: </label>
-            <input type="text"/>
+            <input type="Number" min={1} max={10}/>
          </div>
          <div>
             <label>Number of Bathrooms: </label>
-            <input type="text"/>
+            <input type="Number" min={1} max={10}/>
          </div>
          <div>
             <label>Maximum Occupancy: </label>
-            <input type="text"/>
+            <input type="Number" min={1} max={10}/>
          </div>
          <div>
             <label>Description: </label>
-            <textarea rows="2" cols="20"/>
+            <textarea rows="2" cols="20" />
          </div>
          <div>
             <label>Amenities: </label>

@@ -8,6 +8,12 @@ export const CreatePost = () => {
     const navigate = useNavigate();
     const [type,settype] = useState("")
     const [change,setchanege] = useState(0)
+
+    const items = []
+    for (let i = 0; i < change; i++) {
+        items.push(<div className="prograss"></div>);
+      }
+
     return(
     <>
         <Header/> 
@@ -26,12 +32,8 @@ export const CreatePost = () => {
             : <Payment/>}
         {/* <Type/> */}
         {/* progress bar */}
-
         <div className="progress_bar">
-            <div className="prograss"></div>
-            <div className="prograss"></div>
-            <div className="prograss"></div>
-            <div className="prograss"></div>
+            {items}
         </div>
         {/* navigation button */}
         <div className="div_nav">
