@@ -3,9 +3,11 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios";
 import '../Account/style.css'
 import {RiNotification2Fill , RiWallet2Fill , RiEdit2Fill , RiUser3Line} from '@remixicon/react'
+import LoadingBar from 'react-top-loading-bar'
 
 
 export const Account = () => {
+    const [progress,setProgress] = useState(100)
     const [open,setopen] = useState(false)
     const change = () => {
         setopen(true)
@@ -24,6 +26,7 @@ export const Account = () => {
         setlname(res.data.user.lastname);
     })
     return(<>
+    <LoadingBar color='#f11946' progress={progress} onLoaderFinished={() => setProgress(0)}/>
         <Header />
         <div className="acc_sec">
         <h1 className="acc_user_info">Account Info</h1>

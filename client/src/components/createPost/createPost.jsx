@@ -3,8 +3,10 @@ import '../createPost/style.css'
 import { Payment , Address , Images, Propertydescribe } from "./formcomponent/type"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
+import LoadingBar from 'react-top-loading-bar'
 
 export const CreatePost = () => {
+    const [progress,setProgress] = useState(100)
     const navigate = useNavigate();
     const [type,settype] = useState("")
     const [change,setchanege] = useState(0)
@@ -16,6 +18,7 @@ export const CreatePost = () => {
 
     return(
     <>
+    <LoadingBar color='#f11946' progress={progress} onLoaderFinished={() => setProgress(0)}/>
         <Header/> 
         {(change == 0) ? 
             <div className="createpost">
