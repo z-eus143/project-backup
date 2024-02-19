@@ -8,8 +8,10 @@ import image2 from '../../assets/bhayandar india/img2.webp'
 import image3 from 'D:/tanmay/client/src/assets/Kihim india/img3.webp'
 import image4 from 'D:/tanmay/client/src/assets/sahan ,india/img4.webp'
 import image5 from 'D:/tanmay/client/src/assets/virtasaral india/6ca9378b-5ee7-4c86-9368-f78f05e99d10.webp'
+import LoadingBar from 'react-top-loading-bar'
 
 export const Home = () => {
+    const [progress,setProgress] = useState(100)
     const [state, setstate] = useState("")
     const [city, setcity] = useState("")
     const [num , setnum] = useState("")
@@ -23,6 +25,7 @@ export const Home = () => {
     }
     return(
         <>
+        <LoadingBar color='#f11946' progress={progress} onLoaderFinished={() => setProgress(0)}/>
         <Header />
         <div className="body_sec">
             <div className="search_sec">
