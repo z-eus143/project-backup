@@ -98,7 +98,7 @@
 }
 
 .room_form{
-    padding-top: 10rem;
+    padding-top: 6rem;
 }
 
 
@@ -151,7 +151,7 @@ form textarea {
 
 /* General form styles */
 
-form {
+.for_in_data {
     max-width: 600px;
     margin: 0 auto;
     padding: 20px;
@@ -159,18 +159,16 @@ form {
     border-radius: 10px;
 }
 
-form div {
+.for_div {
     margin-bottom: 15px;
 }
 
-form label {
+.for_lab {
     font-weight: bold;
     display: block;
 }
 
-form input[type="text"],
-form input[type="number"],
-form textarea {
+.in_txt {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
