@@ -1,7 +1,7 @@
 import { Header } from "../header/header"
 import '../createPost/style.css'
 import { Payment , Address , Images, Propertydescribe } from "./formcomponent/type"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import LoadingBar from 'react-top-loading-bar'
 
@@ -41,7 +41,7 @@ export const CreatePost = () => {
         {/* navigation button */}
         <div className="div_nav">
             {(!change == 0) && <div className="nav_back" onClick={ () => {setchanege(change-1)}}>Back</div>}
-            {(change == 4) ? <button className="nav_for" onClick={()=>{navigate("/")}}>Submit</button> : <button className="nav_for" onClick={ () => setchanege(change+1) }>Next</button>}
+            {(change == 4) ? <button className="nav_for" onClick={()=>{navigate("/") ; localStorage.removeItem('propertyId') }}>Submit</button> : <button className="nav_for" onClick={ () => setchanege(change+1) }>Next</button>}
         </div>
     </>
     )

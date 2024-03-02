@@ -1,4 +1,5 @@
-import { useState } from "react"
+import axios from "axios"
+import { useEffect, useState } from "react"
 
 
 // property listing progress
@@ -47,41 +48,80 @@ export const Images = () => {
 
 // for room
 const Propertyroom = () => {
+
+  const [Property,setProperty] = useState('')
+
+  const [formData, setFormData] = useState({
+    Property: '',
+    Bedrooms: '',
+    Bathrooms: '',
+    Occupancy: '',
+    Description: '',
+    Amenities: '',
+    Rules: '',
+    Additional: '',
+  });
+
+  const [message,setmessage] = useState('')
+  useEffect(() => {
+    axios.post("http://localhost:4000/property/property",{"id" : localStorage.getItem("propertyId")})
+    .then((res) => {
+        setProperty(res.data.propertyid[0].Type);
+    })
+  },[])
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async () => {
+      await axios.post("http://localhost:4000/property/propertydata", {formData , "id" : localStorage.getItem("userId")})
+      .then((res) => {
+        localStorage.setItem('propertyId',res.data.id)
+        setmessage(res.data.message)
+      })
+  } 
+
     return( <>
      <form className="for_in_data">
          <div className="for_div">
              <label className="for_lab">Property Name</label>
-             <input type="text" className="in_txt"/>
+             <input type="text" className="in_txt" name="Property" onChange={handleChange} required value={Property}/>
          </div>
          <div className="for_div">
             <label className="for_lab">Number of Bedrooms: </label>
-            <input type="Number" min={1} max={10} className="in_txt"/>
+            <input type="Number" min={1} max={10} className="in_txt" name="Bedrooms" onChange={handleChange} required/>
          </div>
          <div className="for_div">
             <label className="for_lab">Number of Bathrooms: </label>
-            <input type="Number" min={1} max={10} className="in_txt"/>
+            <input type="Number" min={1} max={10} className="in_txt" name="Bathrooms" onChange={handleChange} required/>
          </div>
          <div className="for_div">
             <label className="for_lab">Maximum Occupancy: </label>
-            <input type="Number" min={1} max={10} className="in_txt"/>
+            <input type="Number" min={1} max={10} className="in_txt" name="Occupancy" onChange={handleChange} required/>
          </div>
          <div className="for_div">
             <label className="for_lab">Description: </label>
-            <textarea rows="1" cols="20" className="in_txt"/>
+            <textarea rows="1" cols="20" className="in_txt" name="Description" onChange={handleChange} required/>
          </div>
          <div className="for_div">
             <label className="for_lab">Amenities: </label>
-            <textarea rows="1" cols="20" className="in_txt"/>
+            <textarea rows="1" cols="20" className="in_txt" name="Amenities" onChange={handleChange} required/>
          </div>
          <div className="for_div">
             <label className="for_lab">House Rules: </label>
-            <textarea rows="1" cols="20" className="in_txt"/>
+            <textarea rows="1" cols="20" className="in_txt" name="Rules" onChange={handleChange} required/>
          </div>
          <div className="for_div">
             <label className="for_lab">Additional info: </label>
-            <textarea rows="1" cols="20" className="in_txt"/>
+            <textarea rows="1" cols="20" className="in_txt" name="Additional" onChange={handleChange} required/>
          </div>
      </form>
+     {!(message) ? <button className='btn' style={{marginTop: '10px'}} onClick={handleSubmit}>Submit</button> : <h1>Submitted</h1>}
      </>)
  }
 

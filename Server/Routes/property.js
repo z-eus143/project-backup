@@ -5,21 +5,29 @@ const usermodel = require('../models/User')
 
 PropertyData.post("/propertydata", async(req,res) => {
     try {
-        const {Type,NoBedRoom,NoBathRoom,NoOccupancy,Description,Amenities,HouseRules,Additionalinfo,userId} = req.body;
-        const existinguser = await usermodel.findOne({_id : userId})
+        const {Property,
+        Bedrooms,
+        Bathrooms,
+        Occupancy,
+        Description,
+        Amenities,
+        Rules,
+        Additional} = req.body.formData;
+        const id = req.body.id;
+        const existinguser = await usermodel.findOne({_id : id})
         if(existinguser){
-            await PropertyModel.create({
-                Type : Type,
-                NoBedRoom : NoBedRoom,
-                NoBathRoom : NoBathRoom,
-                NoOccupancy : NoOccupancy,
+            const result = await PropertyModel.create({
+                Type : Property,
+                NoBedRoom : Bedrooms,
+                NoBathRoom : Bathrooms,
+                NoOccupancy : Occupancy,
                 Description : Description,
                 Amenities : Amenities,
-                HouseRules : HouseRules,
-                Additionalinfo : Additionalinfo,
-                userId : userId
+                HouseRules : Rules,
+                Additionalinfo : Additional,
+                userId : id
             });
-            res.status(201).json({"message" : "Created"})
+            res.status(201).json({"message" : "Created" , id : result._id})
         } else {
             res.status(400).json({"message" : "Wrong data"})
         }
@@ -36,6 +44,16 @@ PropertyData.get("/properties", async(req,res) => {
         res.status(200).json({properties})
     } catch (error) {
         res.status(400).json({"message" : "Error"})
+    }
+})
+
+PropertyData.post("/property", async(req,res) => {
+    try {
+        const propertyid = await PropertyModel.find({_id : req.body.id})
+        res.status(200).json({propertyid})
+    } catch (error) {
+        res.status(400).json({"message" : "Error"})
+        console.log(error)
     }
 })
 

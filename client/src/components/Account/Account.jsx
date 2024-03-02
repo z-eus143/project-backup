@@ -49,7 +49,7 @@ export const Account = () => {
         <label>Rented Property</label>
         <div className="user_rent"></div>
         <label>Hosted Properties</label>
-        <div className="user_hosting"></div>
+        <div className="user_hosting">hello</div>
         </div>
         </div>
 
