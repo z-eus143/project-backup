@@ -38,3 +38,17 @@
     margin-left: 5rem;
     margin-bottom: 2rem;
 }
+
+.property{
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr ;
+    row-gap: 2rem;
+    column-gap: 3rem;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+}
+
+.data {
+    font-size: clamp(12px, 4vw, 32px);
+}

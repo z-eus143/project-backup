@@ -9,7 +9,7 @@ const mongoose = require('mongoose')
 const UserRouter = require("./Routes/user")
 const PropertyRouter = require("./Routes/property")
 
-app.use(json({limit: '50mb'}))
+app.use(json({limit: '100mb'}))
 app.use(cors())
 
 app.get("/" , (req,res) => {

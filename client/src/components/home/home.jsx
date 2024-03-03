@@ -2,13 +2,9 @@ import Cards from "../Cards/cards"
 import { Header } from "../header/header"
 import '../home/style.css'
 import search from 'D:/tanmay/client/src/assets/search.png'
-import { useState } from "react"
-import image1 from '../../assets/ajuna india/5.webp'
-import image2 from '../../assets/bhayandar india/img2.webp'
-import image3 from 'D:/tanmay/client/src/assets/Kihim india/img3.webp'
-import image4 from 'D:/tanmay/client/src/assets/sahan ,india/img4.webp'
-import image5 from 'D:/tanmay/client/src/assets/virtasaral india/6ca9378b-5ee7-4c86-9368-f78f05e99d10.webp'
+import { useState , useEffect } from "react"
 import LoadingBar from 'react-top-loading-bar'
+import axios from "axios"
 
 export const Home = () => {
     const [progress,setProgress] = useState(100)
@@ -34,72 +30,41 @@ export const Home = () => {
                 <input type="Number" className="search_txt" placeholder=" No of Guest " min="1" onChange={(e) => setnum(e.target.value)}/>
                 <img src={search} alt="search" className="img_search" onClick={searchData}/>
             </div>
-            <div className="body_post">
-
-                <Cards title='Egypt'
-                imgSrc={image1}
-                imgAlt='Card Image'
-                description='This is the card description'
-                buttontext='$700/ Month'
-                link='CardPage'/>
-
-
-                <Cards title='Egypt'
-                imgSrc={image2}
-                imgAlt='Card Image'
-                description='This is the card description'
-                buttontext='$1400/ Month'
-                link='CardPage'/>
-
-
-                <Cards title='Egypt'
-                imgSrc={image3}
-                imgAlt='Card Image'
-                description='This is the card description'
-                buttontext='$800/ Month'
-                link='CardPage'/>
-
-
-                <Cards title='Egypt'
-                imgSrc={image4}
-                imgAlt='Card Image'
-                description='This is the card description'
-                buttontext='$600/ Month'
-                link='CardPage'/>
-
-
-                <Cards title='Egypt'
-                imgSrc={image5}
-                imgAlt='Card Image'
-                description='This is the card description'
-                buttontext='$700/ Month'
-                link='CardPage'/>
-
-
-                <Cards title='Egypt'
-                imgSrc={image1}
-                imgAlt='Card Image'
-                description='This is the card description'
-                buttontext='$700/ Month'
-                link='CardPage'/>
-
-
-                <Cards title='Egypt'
-                imgSrc={image4}
-                imgAlt='Card Image'
-                description='This is the card description'
-                buttontext='$500/ Month'
-                link='CardPage'/>
-
-                
-                <Cards title='Egypt'
-                imgSrc={image2}
-                imgAlt='Card Image'
-                description='This is the card description'
-                buttontext='$700/ Month'
-                link='CardPage'/>
-            </div>
+                <Post/>
         </div>
         </>
+    )
+}
+
+
+const Post = () => {
+    const [propertydata,setpropertydata] = useState(JSON.parse(localStorage.getItem('propertydata')))
+
+useEffect(() => {
+axios.get("http://localhost:4000/property/properties")
+    .then((res) => {
+        const mappedData = res.data.properties.map(property => ({
+            Type: property.Type,
+            NoBedRoom: property.NoBedRoom,
+            Amenities: property.Amenities,
+            Description : property.Description
+        }));
+        var jsonString = JSON.stringify(mappedData)
+        console.log(jsonString)
+        localStorage.setItem('propertydata',jsonString)
+    })
+},[])
+
+    return(
+        <div className="property">{
+            propertydata.map((item, index) => {
+                return(<div key={index}> 
+                    <h1 className="data">Type : {item.Type}</h1>
+                    <h1 className="data">BedRooms : {item.NoBedRoom}</h1>
+                    <h1 className="data">Amenities : {item.Amenities}</h1>
+                    <h1 className="data">Description : {item.Description}</h1>
+                </div>)
+            })
+        }</div>
     )
 }

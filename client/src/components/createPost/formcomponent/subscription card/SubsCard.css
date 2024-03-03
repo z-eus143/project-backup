@@ -1,0 +1,80 @@
+.Subs-card{
+    display: grid;
+    justify-content:center;
+    align-items: center;
+    background-color:white;
+    height: 250px;
+    width: 180px;
+    border: 2px solid #d5d5d5;
+    border-radius: 15px;   
+    margin: 20px;
+    padding: 3px;
+    padding-bottom: 10px;
+    padding-top:0px;
+    overflow: hidden; /* Hide overflowing content */
+  transition: transform 0.5s ease;
+}
+
+.Subs-card:hover{
+    box-shadow:0px 10px 18px #999 ;
+    transform: translateY(-10px);
+}
+
+.Sub-Title{
+    display: flex;
+    justify-self:center;
+    align-items: center;
+    height: 40px;
+    width: 80%;
+    margin-left: -10px;
+    background-color:white;
+}
+
+.Sub-price{
+    display: flex;
+    justify-self: center;
+    align-items:center;
+    height: 30px;
+    margin: 2px;
+    margin-top: -10px;
+    background-color:white;
+}
+
+.description{
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    background: white;
+    margin: 0px auto;
+    margin-top: -20px;
+    margin-left:12px;
+    font-size: 10px;
+    padding: 2px;
+}   
+
+.Sub-news{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    height: 20px;
+    font-size: 10px;
+    margin-top: -20px;
+}
+
+.Sub-btn{
+    justify-self: center;
+    
+    height: 30px;
+    width: 80%;
+    color: white;
+    background-color:salmon;
+    border-radius: 30px;
+    border: 1px solid #d5d5d5;
+    margin-top: -10px;
+}
+
+.Sub-btn:hover{
+    box-shadow:0px 5px 9px #999 ;
+}
+

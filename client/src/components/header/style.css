@@ -1,6 +1,6 @@
 .header_sec{
     position: fixed;
-    z-index: 0;
+    z-index: 9999;
     display: grid;
     width: 100%;
     grid-template-columns:1fr 1fr 1fr;
@@ -71,6 +71,7 @@
 
 .dropdownform{
     position: fixed;
+    width: 22rem;
     margin-top: 100px;
     margin-left: 72%;
     background-color: white;
@@ -83,6 +84,7 @@
 .signInput{
     max-width: 190px;
     padding: 12px;
+    margin-left: 25px;
     border-radius: 30px;
     outline: none;
     border-style:none;

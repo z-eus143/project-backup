@@ -2,6 +2,8 @@ const express = require('express')
 const PropertyData = express.Router()
 const PropertyModel = require('../models/Property')
 const usermodel = require('../models/User')
+const locationmodel = require('../models/location')
+const imageModel = require('../models/image')
 
 PropertyData.post("/propertydata", async(req,res) => {
     try {
@@ -51,6 +53,69 @@ PropertyData.post("/property", async(req,res) => {
     try {
         const propertyid = await PropertyModel.find({_id : req.body.id})
         res.status(200).json({propertyid})
+    } catch (error) {
+        res.status(400).json({"message" : "Error"})
+        console.log(error)
+    }
+})
+
+PropertyData.post("/locationdata", async(req,res) => {
+    try {
+        const {Flat,street,locality,city,area} = req.body.formData;
+        const id = req.body.id;
+        const existingproperty = await PropertyModel.findOne({_id : id})
+        if(existingproperty){
+            const result = await locationmodel.create({
+                Flat : Flat,
+                street : street,
+                locality : locality,
+                city : city,
+                area : area,
+                propertyId : id
+            });
+            res.status(201).json({"message" : "Created" , id : result._id})
+        } else {
+            res.status(400).json({"message" : "Wrong data"})
+        }
+    } catch (error) {
+        res.status(400).json({"message" : "Error"})
+        console.log(error)
+    }
+})
+
+PropertyData.post("/location", async(req,res) => {
+    try {
+        const propertyid = await locationmodel.find({_id : req.body.id})
+        res.status(200).json({propertyid})
+    } catch (error) {
+        res.status(400).json({"message" : "Error"})
+        console.log(error)
+    }
+})
+
+PropertyData.post("/images", async(req,res) => {
+    try {
+        const images = req.body.images;
+        const existinguser = await PropertyModel.find({propertyId : req.body.id})
+        if(existinguser){
+            const result = await imageModel.create({
+                images : images,
+                propertyId : req.body.id
+            });
+        res.status(201).json({"message" : "Created" , id : result._id})
+        }else {
+            res.status(400).json({"message" : "Wrong data"})
+        }
+    } catch (error) {
+        res.status(400).json({"message" : "Error"})
+        console.log(error)
+    } 
+})
+
+PropertyData.post("/imagesfromdb", async(req,res) => {
+    try {
+        const images = await imageModel.find({_id : req.body.id})
+        res.status(200).json({images , "message" : "valid"})
     } catch (error) {
         res.status(400).json({"message" : "Error"})
         console.log(error)
