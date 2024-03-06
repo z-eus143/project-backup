@@ -7,6 +7,10 @@ import LoadingBar from 'react-top-loading-bar'
 
 
 export const Account = () => {
+    useEffect(() => {
+        // Scroll to the top of the page when the component mounts
+        window.scrollTo(0, 0);
+      }, []);
     const [progress,setProgress] = useState(100)
     const [open,setopen] = useState(false)
     const change = () => {

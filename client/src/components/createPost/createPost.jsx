@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom"
 import LoadingBar from 'react-top-loading-bar'
 
 export const CreatePost = () => {
+    useEffect(() => {
+        // Scroll to the top of the page when the component mounts
+        window.scrollTo(0, 0);
+      }, []);
     const [progress,setProgress] = useState(100)
     const navigate = useNavigate();
     const [type,settype] = useState("")

@@ -114,7 +114,7 @@ PropertyData.post("/images", async(req,res) => {
 
 PropertyData.post("/imagesfromdb", async(req,res) => {
     try {
-        const images = await imageModel.find({_id : req.body.id})
+        const images = await imageModel.find({propertyId : req.body.id})
         res.status(200).json({images , "message" : "valid"})
     } catch (error) {
         res.status(400).json({"message" : "Error"})

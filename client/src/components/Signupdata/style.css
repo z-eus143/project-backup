@@ -7,6 +7,7 @@
     align-items: center;
     background-size: cover;
     background-position: center;
+    margin-left: 28%;
 }
 
 .Datainput{
@@ -60,6 +61,7 @@
 }
 
 input[type="file"] {
+  margin-left: 3.5rem;
     position: relative;
   }
   
